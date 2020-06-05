@@ -2,19 +2,22 @@ from Startuptools import *
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("ShortDeviceName", type=str)
-
-# add more params here
+parser.add_argument("-dir", "--dirName", type=str)
+parser.add_argument("-n", "--NumShots", type=int)
+parser.add_argument("-d", "--ShortDeviceName", type=int)
 
 args = parser.parse_args()
 
-ShortDeviceName = args.ShortDeviceName
-print('Device selected '+ ShortDeviceName)
+ShortDeviceName = str(args.ShortDeviceName)
+NumShots = args.NumShots
+dirName = args.dirName
 
-########
-# User inputs
-dirName = '/sf/alvra/config/src/python/photodiag/PhotonDiagControl/Startup/Aramis/Data/040620'
-NumShots = 100
+#print('Device selected: '+ ShortDeviceName, +', number frames: %.1f'%NumShots + ', saving directory: ' +dirName)
+print('Device selected: '+ ShortDeviceName)
+#print('Device selected: '+ ShortDeviceName, +', number frames: %.1f'%NumShots)
+
+
+
 # Get device parameters
 
 Device_params = device_param(ShortDeviceName)

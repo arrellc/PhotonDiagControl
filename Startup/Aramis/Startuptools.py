@@ -8,33 +8,45 @@ from datetime import datetime
 import h5py as h5
 
 def device_param(deviceName):
-    if deviceName == '053':
+    # Front end
+    if deviceName == '53':
         FullName = 'SARFE10-PPRM053'
         BitDepth = 10
-    if deviceName == '064':
+    # Optics hutch common
+    if deviceName == '64':
         FullName = 'SARFE10-PPRM064'
         BitDepth = 12
-    if deviceName == '078':
+    # Optics hutch Alvra    
+    if deviceName == '66':
+       FullName = 'SAROP11-PPRM066'
+       BitDepth = 12
+    if deviceName == '78':
         FullName = 'SAROP11-PPRM078'
         BitDepth = 12
-    if deviceName == '094':
+    if deviceName == '110':
+        FullName = 'SAROP11-PPRM110'
+        BitDepth = 12
+    if deviceName == '117': 
+        FullName = 'SAROP11-PPRM117' 
+        BitDepth = 12 
+    if deviceName == '122': 
+        FullName = 'SAROP11-PPRM122' 
+        BitDepth = 12
+    # Optics hutch Bernina
+    if deviceName == '94':
         FullName = 'SAROP21-PPRM094'
         BitDepth = 12
-    if deviceName == '097':
+    if deviceName == '97':
         FullName = 'SAROP21-PSCR097'
         BitDepth = 12
     if deviceName == '102':
         FullName = 'SAROP21-PPRM102'
         BitDepth = 12
-
-    if deviceName == '110':
-        FullName = 'SAROP11-PPRM110'
+    if deviceName == '133':
+        FullName = 'SAROP21-PPRM133'
         BitDepth = 12
-    if deviceName == '117':
-        FullName = 'SAROP11-PPRM117'
-        BitDepth = 12
-    if deviceName == '122':
-        FullName = 'SAROP11-PPRM122'
+    if deviceName == '138':
+        FullName = 'SAROP21-PPRM138'
         BitDepth = 12
     else:
         print('Incorrect device name, use only last 3 digits, i.e for SARFE10-PPRM053 use 053')
@@ -162,7 +174,7 @@ def display_images(DataOut, figN):
     x_pos_jitter = np.std(DataOut['x_fit_mean'])/np.abs(np.mean(DataOut['x_fit_mean']))
     y_pos_jitter = np.std(DataOut['y_fit_mean'])/np.abs(np.mean(DataOut['y_fit_mean']))
     ATT053 = '\nATT053: %.3f'%DataOut['ATT053']
-    APU044 = 'x: '+str(DataOut['APU044_x_pos'])+',y: '+str(DataOut['APU044_y_pos'])+',w: '+str(DataOut['APU044_w_pos'])+',h: '+str(DataOut['APU044_h_pos'])
+    APU044 = 'x: %.3f'%DataOut['APU044_x_pos'] +',y: %.3f'%DataOut['APU044_y_pos'] +',w: %.3f'%DataOut['APU044_w_pos'] +',h: %.3f'%DataOut['APU044_h_pos']
     textStr = datetime.today().strftime('%Y-%m-%d,%H:%M')+'\nframes: %.1f'%len(DataOut['y_profile'])+'\nMax count: %.1f'%maxValue+'\nIntensity jitter std: %.4f'%intensity_jitter+'\nHoriz jitter std: %.4f'%x_pos_jitter+'\nVertical jitter std: %.4f'%y_pos_jitter+ATT053+'\nAPU044: '+APU044
     fileStr = 'Data saved: '+figN
     
