@@ -171,8 +171,8 @@ def display_images(DataOut, figN):
     
     # Set display text
     intensity_jitter = np.std(DataOut['intensity'])/np.mean(DataOut['intensity'])
-    x_pos_jitter = np.std(DataOut['x_fit_mean'])/np.abs(np.mean(DataOut['x_fit_mean']))
-    y_pos_jitter = np.std(DataOut['y_fit_mean'])/np.abs(np.mean(DataOut['y_fit_mean']))
+    x_pos_jitter = np.std(DataOut['x_fit_standard_deviation'])/np.abs(np.mean(DataOut['x_fit_standard_deviation']))
+    y_pos_jitter = np.std(DataOut['y_fit_standard_deviation'])/np.abs(np.mean(DataOut['y_fit_standard_deviation']))
     ATT053 = '\nATT053: %.3f'%DataOut['ATT053']
     APU044 = 'x: %.3f'%DataOut['APU044_x_pos'] +',y: %.3f'%DataOut['APU044_y_pos'] +',w: %.3f'%DataOut['APU044_w_pos'] +',h: %.3f'%DataOut['APU044_h_pos']
     textStr = datetime.today().strftime('%Y-%m-%d,%H:%M')+'\nframes: %.1f'%len(DataOut['y_profile'])+'\nMax count: %.1f'%maxValue+'\nIntensity jitter std: %.4f'%intensity_jitter+'\nHoriz jitter std: %.4f'%x_pos_jitter+'\nVertical jitter std: %.4f'%y_pos_jitter+ATT053+'\nAPU044: '+APU044

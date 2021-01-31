@@ -1,1 +1,5 @@
-{"SAROP11-CVME-PBPS1-EVR0:FrontUnivOut0-Ena-SP": "Enabled", "SAROP11-CVME-PBPS1-EVR0:FrontUnivOut1-Ena-SP": "Enabled"}
+{"SAROP11-CVME-PBPS1-EVR0:FrontUnivOut0-Ena-SP": "Enabled",
+"SAROP11-CVME-PBPS1-EVR0:FrontUnivOut1-Ena-SP": "Enabled",
+"SAROP11-CVME-PBPS1-EVR0:FrontUnivOut0-Src-Pulse-SP": "Pulser 0",
+"SAROP11-CVME-PBPS1-EVR0:FrontUnivOut1-Src-Pulse-SP": "Pulser 0"}
+
