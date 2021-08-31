@@ -34,6 +34,10 @@ def device_param(deviceName):
     if deviceName == '162':
         FullName = 'SATOP21-PSCR162'
         BitDepth = 12
+    # Furka
+    if deviceName == '136':
+        FullName = 'SATOP31-PSCR136'
+        BitDepth = 12
     else:
         print('Incorrect device name, use only last 3 digits, i.e for SARFE10-PPRM053 use 053')
         
@@ -137,7 +141,7 @@ def get_image(Device_params, numImg, angle=None):
 def screen_select(Device_params, pos):
     print(Device_params['FullName'])
     screenPV= Device_params['FullName']+':PROBE_SP'
-    ep.caput(screenPV, pos)
+    ep.caput(screenPV, pos, wait = True)
 
 def norm(DataIn):
     return(DataIn/np.max(DataIn))

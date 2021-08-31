@@ -28,7 +28,7 @@ print(Device_params)
 fN = dirName +'/'+Device_params['FullName']+'.h5'
 figN =dirName +'/'+Device_params['FullName']+'.h5'
 # Move screen in
-#screen_select(Device_params,1)
+screen_select(Device_params,1)
 
 # Take images
 
@@ -44,4 +44,4 @@ save_data(fN, DataOut)
 
 # Move Screen out
 
-#screen_select(Device_params,0)
+screen_select(Device_params,0)

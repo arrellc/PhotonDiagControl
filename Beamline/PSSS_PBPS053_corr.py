@@ -5,7 +5,7 @@ import numpy as np
 PSSS = 'SARFE10-PSSS059:SPECTRUM_Y'
 PBPG = 'SARFE10-PBPS053:INTENSITY'
 channels = [PSSS, PBPG]
-numShots = 5000
+numShots = 15000
 offset_range = [-2,-1,0,1,2]
 
 PSSS_data = []
@@ -31,7 +31,7 @@ PSSS_data = np.asarray(PSSS_data)
 PBPG_data = np.asarray(PBPG_data)
 PSSS_data_good = np.asarray(PSSS_data_good)
 PBPG_data_good = np.asarray(PBPG_data_good)
-
+print(len(PSSS_data_good))
 pulse_id = np.asarray(pulse_id)
 pulse_id = pulse_id[index_good]
 
