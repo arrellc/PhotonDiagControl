@@ -1,0 +1,367 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 1056964608 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2659), pid=3708, tid=3710
+#
+# JRE version:  (12.0+32) (build )
+# Java VM: OpenJDK 64-Bit Server VM (12+32, mixed mode, aot, sharing, tiered, compressed oops, g1 gc, linux-amd64)
+# No core dump will be written. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.desktop/sun.awt=ALL-UNNAMED --add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED --add-opens=java.desktop/sun.swing=ALL-UNNAMED --add-opens=java.base/jdk.internal.loader=ALL-UNNAMED -Duser.home=/sf/data/measurements ch.psi.pshell.ui.App -py3 -home=/sf/data/applications/pshell_op -data=/sf/data/measurements -strh=/sf/data/applications/stripchart -version=v1_17 -pini=true -laf=dark -l -d -k=false -q -b -e -g -n -buf=10 -poll=250 -clog=SEVERE -size=1000x800 -p=/opt/gfa/pshell/apps/screen_panel/SfCamera.java -p=/opt/gfa/pshell/apps/screen_panel/Inventory.java -p=/opt/gfa/pshell/apps/screen_panel/CameraCalibrationDialog.java -p=/opt/gfa/pshell/apps/screen_panel/ScreenPanel9.java -srv_url=sf-daqsync-01:8889 -cam_srv_url=sf-daqsync-01:8888 -laf=darcula -persist -cam_type=Photonics -alias
+
+Host: Intel(R) Xeon(R) Gold 6254 CPU @ 3.10GHz, 16 cores, 62G, Red Hat Enterprise Linux Server release 7.9 (Maipo)
+Time: Tue May 10 13:41:15 2022 CEST elapsed time: 0 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f4650011800):  JavaThread "Unknown thread" [_thread_in_vm, id=3710, stack(0x00007f4658988000,0x00007f4658a89000)]
+
+Stack: [0x00007f4658988000,0x00007f4658a89000],  sp=0x00007f4658a872f0,  free space=1020k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xe43500]  VMError::report_and_die(int, char const*, char const*, __va_list_tag*, Thread*, unsigned char*, void*, void*, char const*, int, unsigned long)+0x310
+V  [libjvm.so+0xe440cb]  VMError::report_and_die(Thread*, char const*, int, unsigned long, VMErrorType, char const*, __va_list_tag*)+0x2b
+V  [libjvm.so+0x65d9e5]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*, ...)+0xd5
+V  [libjvm.so+0xbf8458]  os::pd_commit_memory_or_exit(char*, unsigned long, unsigned long, bool, char const*)+0x108
+V  [libjvm.so+0xbefc3d]  os::commit_memory_or_exit(char*, unsigned long, unsigned long, bool, char const*)+0x1d
+V  [libjvm.so+0x787a4c]  G1PageBasedVirtualSpace::commit_preferred_pages(unsigned long, unsigned long)+0x6c
+V  [libjvm.so+0x787de4]  G1PageBasedVirtualSpace::commit(unsigned long, unsigned long)+0x154
+V  [libjvm.so+0x795bb0]  G1RegionsLargerThanCommitSizeMapper::commit_regions(unsigned int, unsigned long, WorkGang*)+0x40
+V  [libjvm.so+0x816d00]  HeapRegionManager::commit_regions(unsigned int, unsigned long, WorkGang*)+0x80
+V  [libjvm.so+0x817a6f]  HeapRegionManager::make_regions_available(unsigned int, unsigned int, WorkGang*)+0x3f
+V  [libjvm.so+0x817ff9]  HeapRegionManager::expand_at(unsigned int, unsigned int, WorkGang*)+0x119
+V  [libjvm.so+0x73c440]  G1CollectedHeap::expand(unsigned long, WorkGang*, double*)+0xe0
+V  [libjvm.so+0x73ccb6]  G1CollectedHeap::initialize()+0x7f6
+V  [libjvm.so+0xdfd281]  Universe::initialize_heap()+0x41
+V  [libjvm.so+0xdfd550]  universe_init()+0x70
+V  [libjvm.so+0x83caa7]  init_globals()+0x57
+V  [libjvm.so+0xdd541f]  Threads::create_vm(JavaVMInitArgs*, bool*)+0x35f
+V  [libjvm.so+0x8faf32]  JNI_CreateJavaVM+0x52
+C  [libjli.so+0x4a56]  JavaMain+0x86
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007f46573c62c0, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x00007f4650066800 GCTaskThread "GC Thread#0" [stack: 0x00007f4612dad000,0x00007f4612ead000] [id=3711]
+  0x00007f4650080000 ConcurrentGCThread "G1 Main Marker" [stack: 0x00007f4612cab000,0x00007f4612dab000] [id=3712]
+  0x00007f4650082000 ConcurrentGCThread "G1 Conc#0" [stack: 0x00007f4612ba9000,0x00007f4612ca9000] [id=3713]
+
+[error occurred during error reporting (printing all threads), id 0xb, SIGSEGV (0xb) at pc=0x00007f465664b260]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007f465000ea80] Heap_lock - owner thread: 0x00007f4650011800
+
+Heap address: 0x0000000413c00000, size: 16068 MB, Compressed Oops mode: Non-zero based: 0x0000000413c00000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 00:5e 38918395                           /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/bin/java
+00600000-00601000 r--p 00000000 00:5e 38918395                           /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/bin/java
+00601000-00602000 rw-p 00001000 00:5e 38918395                           /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/bin/java
+00c37000-00c58000 rw-p 00000000 00:00 0                                  [heap]
+452c00000-800000000 ---p 00000000 00:00 0 
+7f4603a72000-7f4604021000 rw-p 00000000 00:00 0 
+7f4604021000-7f4608000000 ---p 00000000 00:00 0 
+7f4608000000-7f4608021000 rw-p 00000000 00:00 0 
+7f4608021000-7f460c000000 ---p 00000000 00:00 0 
+7f460c000000-7f460c021000 rw-p 00000000 00:00 0 
+7f460c021000-7f4610000000 ---p 00000000 00:00 0 
+7f461009c000-7f4612ba7000 rw-p 00000000 00:00 0 
+7f4612ba7000-7f4612ba8000 ---p 00000000 00:00 0 
+7f4612ba8000-7f4612ca9000 rw-p 00000000 00:00 0 
+7f4612ca9000-7f4612caa000 ---p 00000000 00:00 0 
+7f4612caa000-7f4612dab000 rw-p 00000000 00:00 0 
+7f4612dab000-7f4612dac000 ---p 00000000 00:00 0 
+7f4612dac000-7f461302e000 rw-p 00000000 00:00 0 
+7f461302e000-7f4638474000 ---p 00000000 00:00 0 
+7f4638474000-7f4638b7b000 rw-p 00000000 00:00 0 
+7f4638b7b000-7f4638deb000 rwxp 00000000 00:00 0 
+7f4638deb000-7f46392ba000 ---p 00000000 00:00 0 
+7f46392ba000-7f463952a000 rwxp 00000000 00:00 0 
+7f463952a000-7f464071a000 ---p 00000000 00:00 0 
+7f464071a000-7f464098a000 rwxp 00000000 00:00 0 
+7f464098a000-7f4647b7b000 ---p 00000000 00:00 0 
+7f4647b7b000-7f4650000000 r--s 00000000 00:5e 39115123                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/modules
+7f4650000000-7f46500c4000 rw-p 00000000 00:00 0 
+7f46500c4000-7f4654000000 ---p 00000000 00:00 0 
+7f465402d000-7f4654638000 rw-p 00000000 00:00 0 
+7f4654638000-7f465471c000 ---p 00000000 00:00 0 
+7f465471c000-7f4654721000 rw-p 00000000 00:00 0 
+7f4654721000-7f4654805000 ---p 00000000 00:00 0 
+7f4654805000-7f4654820000 r-xp 00000000 00:5e 38938073                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libjimage.so
+7f4654820000-7f4654a1f000 ---p 0001b000 00:5e 38938073                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libjimage.so
+7f4654a1f000-7f4654a21000 r--p 0001a000 00:5e 38938073                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libjimage.so
+7f4654a21000-7f4654a22000 rw-p 0001c000 00:5e 38938073                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libjimage.so
+7f4654a22000-7f4654a29000 r-xp 00000000 00:5e 39115122                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libzip.so
+7f4654a29000-7f4654c28000 ---p 00007000 00:5e 39115122                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libzip.so
+7f4654c28000-7f4654c29000 r--p 00006000 00:5e 39115122                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libzip.so
+7f4654c29000-7f4654c2a000 rw-p 00007000 00:5e 39115122                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libzip.so
+7f4654c2a000-7f4655495000 r--s 00000000 fd:02 6316584                    /var/lib/sss/mc/passwd
+7f4655495000-7f465549d000 r-xp 00000000 fd:00 25993524                   /usr/lib64/libnss_sss.so.2
+7f465549d000-7f465569c000 ---p 00008000 fd:00 25993524                   /usr/lib64/libnss_sss.so.2
+7f465569c000-7f465569d000 r--p 00007000 fd:00 25993524                   /usr/lib64/libnss_sss.so.2
+7f465569d000-7f465569e000 rw-p 00008000 fd:00 25993524                   /usr/lib64/libnss_sss.so.2
+7f465569e000-7f46556aa000 r-xp 00000000 fd:00 25461259                   /usr/lib64/libnss_files-2.17.so
+7f46556aa000-7f46558a9000 ---p 0000c000 fd:00 25461259                   /usr/lib64/libnss_files-2.17.so
+7f46558a9000-7f46558aa000 r--p 0000b000 fd:00 25461259                   /usr/lib64/libnss_files-2.17.so
+7f46558aa000-7f46558ab000 rw-p 0000c000 fd:00 25461259                   /usr/lib64/libnss_files-2.17.so
+7f46558ab000-7f46558b1000 rw-p 00000000 00:00 0 
+7f46558b1000-7f46558d9000 r-xp 00000000 00:5e 38938069                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libjava.so
+7f46558d9000-7f4655ad8000 ---p 00028000 00:5e 38938069                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libjava.so
+7f4655ad8000-7f4655ad9000 r--p 00027000 00:5e 38938069                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libjava.so
+7f4655ad9000-7f4655adb000 rw-p 00028000 00:5e 38938069                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libjava.so
+7f4655adb000-7f4655ae8000 r-xp 00000000 00:5e 39115121                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libverify.so
+7f4655ae8000-7f4655ce7000 ---p 0000d000 00:5e 39115121                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libverify.so
+7f4655ce7000-7f4655ce9000 r--p 0000c000 00:5e 39115121                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libverify.so
+7f4655ce9000-7f4655cea000 rw-p 0000e000 00:5e 39115121                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libverify.so
+7f4655cea000-7f4655cf1000 r-xp 00000000 fd:00 25461271                   /usr/lib64/librt-2.17.so
+7f4655cf1000-7f4655ef0000 ---p 00007000 fd:00 25461271                   /usr/lib64/librt-2.17.so
+7f4655ef0000-7f4655ef1000 r--p 00006000 fd:00 25461271                   /usr/lib64/librt-2.17.so
+7f4655ef1000-7f4655ef2000 rw-p 00007000 fd:00 25461271                   /usr/lib64/librt-2.17.so
+7f4655ef2000-7f4657055000 r-xp 00000000 00:5e 39792083                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/server/libjvm.so
+7f4657055000-7f4657255000 ---p 01163000 00:5e 39792083                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/server/libjvm.so
+7f4657255000-7f4657316000 r--p 01163000 00:5e 39792083                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/server/libjvm.so
+7f4657316000-7f465734f000 rw-p 01224000 00:5e 39792083                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/server/libjvm.so
+7f465734f000-7f46573d2000 rw-p 00000000 00:00 0 
+7f46573d2000-7f46574d3000 r-xp 00000000 fd:00 25422616                   /usr/lib64/libm-2.17.so
+7f46574d3000-7f46576d2000 ---p 00101000 fd:00 25422616                   /usr/lib64/libm-2.17.so
+7f46576d2000-7f46576d3000 r--p 00100000 fd:00 25422616                   /usr/lib64/libm-2.17.so
+7f46576d3000-7f46576d4000 rw-p 00101000 fd:00 25422616                   /usr/lib64/libm-2.17.so
+7f46576d4000-7f46576d6000 r-xp 00000000 fd:00 25461275                   /usr/lib64/libutil-2.17.so
+7f46576d6000-7f46578d5000 ---p 00002000 fd:00 25461275                   /usr/lib64/libutil-2.17.so
+7f46578d5000-7f46578d6000 r--p 00001000 fd:00 25461275                   /usr/lib64/libutil-2.17.so
+7f46578d6000-7f46578d7000 rw-p 00002000 fd:00 25461275                   /usr/lib64/libutil-2.17.so
+7f46578d7000-7f4657a9b000 r-xp 00000000 fd:00 25167186                   /usr/lib64/libc-2.17.so
+7f4657a9b000-7f4657c9a000 ---p 001c4000 fd:00 25167186                   /usr/lib64/libc-2.17.so
+7f4657c9a000-7f4657c9e000 r--p 001c3000 fd:00 25167186                   /usr/lib64/libc-2.17.so
+7f4657c9e000-7f4657ca0000 rw-p 001c7000 fd:00 25167186                   /usr/lib64/libc-2.17.so
+7f4657ca0000-7f4657ca5000 rw-p 00000000 00:00 0 
+7f4657ca5000-7f4657ca7000 r-xp 00000000 fd:00 25422608                   /usr/lib64/libdl-2.17.so
+7f4657ca7000-7f4657ea7000 ---p 00002000 fd:00 25422608                   /usr/lib64/libdl-2.17.so
+7f4657ea7000-7f4657ea8000 r--p 00002000 fd:00 25422608                   /usr/lib64/libdl-2.17.so
+7f4657ea8000-7f4657ea9000 rw-p 00003000 fd:00 25422608                   /usr/lib64/libdl-2.17.so
+7f4657ea9000-7f4657ec0000 r-xp 00000000 fd:00 25461267                   /usr/lib64/libpthread-2.17.so
+7f4657ec0000-7f46580bf000 ---p 00017000 fd:00 25461267                   /usr/lib64/libpthread-2.17.so
+7f46580bf000-7f46580c0000 r--p 00016000 fd:00 25461267                   /usr/lib64/libpthread-2.17.so
+7f46580c0000-7f46580c1000 rw-p 00017000 fd:00 25461267                   /usr/lib64/libpthread-2.17.so
+7f46580c1000-7f46580c5000 rw-p 00000000 00:00 0 
+7f46580c5000-7f46580d5000 r-xp 00000000 00:5e 38938074                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libjli.so
+7f46580d5000-7f46582d4000 ---p 00010000 00:5e 38938074                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libjli.so
+7f46582d4000-7f46582d5000 r--p 0000f000 00:5e 38938074                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libjli.so
+7f46582d5000-7f46582d6000 rw-p 00010000 00:5e 38938074                   /net/gfa-hafs/export/applications/x86_64/java/openjdk-12_32/lib/libjli.so
+7f46582d6000-7f46582eb000 r-xp 00000000 fd:00 25310329                   /usr/lib64/libz.so.1.2.7
+7f46582eb000-7f46584ea000 ---p 00015000 fd:00 25310329                   /usr/lib64/libz.so.1.2.7
+7f46584ea000-7f46584eb000 r--p 00014000 fd:00 25310329                   /usr/lib64/libz.so.1.2.7
+7f46584eb000-7f46584ec000 rw-p 00015000 fd:00 25310329                   /usr/lib64/libz.so.1.2.7
+7f46584ec000-7f4658554000 r--p 00000000 00:5e 40700052                   /net/gfa-hafs/export/applications/x86_64/python-3.8/20211215/lib/libpython3.8.so.1.0
+7f4658554000-7f4658747000 r-xp 00068000 00:5e 40700052                   /net/gfa-hafs/export/applications/x86_64/python-3.8/20211215/lib/libpython3.8.so.1.0
+7f4658747000-7f465882e000 r--p 0025b000 00:5e 40700052                   /net/gfa-hafs/export/applications/x86_64/python-3.8/20211215/lib/libpython3.8.so.1.0
+7f465882e000-7f4658836000 r--p 00341000 00:5e 40700052                   /net/gfa-hafs/export/applications/x86_64/python-3.8/20211215/lib/libpython3.8.so.1.0
+7f4658836000-7f465886e000 rw-p 00349000 00:5e 40700052                   /net/gfa-hafs/export/applications/x86_64/python-3.8/20211215/lib/libpython3.8.so.1.0
+7f465886e000-7f465888e000 rw-p 00000000 00:00 0 
+7f465888e000-7f46588b0000 r-xp 00000000 fd:00 25422601                   /usr/lib64/ld-2.17.so
+7f465890a000-7f4658988000 rw-p 00000000 00:00 0 
+7f4658988000-7f465898c000 ---p 00000000 00:00 0 
+7f465898c000-7f4658a8f000 rw-p 00000000 00:00 0 
+7f4658a90000-7f4658a99000 rw-p 00000000 00:00 0 
+7f4658a99000-7f4658aa3000 ---p 00000000 00:00 0 
+7f4658aa3000-7f4658aab000 rw-s 00000000 fd:03 3145915                    /tmp/hsperfdata_arrell_c/3708
+7f4658aab000-7f4658aac000 ---p 00000000 00:00 0 
+7f4658aac000-7f4658aad000 r--p 00000000 00:00 0 
+7f4658aad000-7f4658aae000 ---p 00000000 00:00 0 
+7f4658aae000-7f4658aaf000 rw-p 00000000 00:00 0 
+7f4658aaf000-7f4658ab0000 r--p 00021000 fd:00 25422601                   /usr/lib64/ld-2.17.so
+7f4658ab0000-7f4658ab1000 rw-p 00022000 fd:00 25422601                   /usr/lib64/ld-2.17.so
+7f4658ab1000-7f4658ab2000 rw-p 00000000 00:00 0 
+7ffe3495c000-7ffe3497f000 rw-p 00000000 00:00 0                          [stack]
+7ffe349e7000-7ffe349e9000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+
+VM Arguments:
+jvm_args: --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.desktop/sun.awt=ALL-UNNAMED --add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED --add-opens=java.desktop/sun.swing=ALL-UNNAMED --add-opens=java.base/jdk.internal.loader=ALL-UNNAMED -Duser.home=/sf/data/measurements 
+java_command: ch.psi.pshell.ui.App -py3 -home=/sf/data/applications/pshell_op -data=/sf/data/measurements -strh=/sf/data/applications/stripchart -version=v1_17 -pini=true -laf=dark -l -d -k=false -q -b -e -g -n -buf=10 -poll=250 -clog=SEVERE -size=1000x800 -p=/opt/gfa/pshell/apps/screen_panel/SfCamera.java -p=/opt/gfa/pshell/apps/screen_panel/Inventory.java -p=/opt/gfa/pshell/apps/screen_panel/CameraCalibrationDialog.java -p=/opt/gfa/pshell/apps/screen_panel/ScreenPanel9.java -srv_url=sf-daqsync-01:8889 -cam_srv_url=sf-daqsync-01:8888 -laf=darcula -persist -cam_type=Photonics -alias
+java_class_path (initial): /opt/gfa/pshell/v1_17:/opt/gfa/python-3.8/latest/lib/python3.8/site-packages/jep/jep-3.9.1.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 12                                        {product} {ergonomic}
+     uint ConcGCThreads                            = 3                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 13                                        {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 4194304                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 1056964608                                {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 16848519168                               {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 4194304                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 7594288                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122031976                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122031976                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=/opt/gfa/python-3.8/latest/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sf/controls/bin:/sf/photo/bin:/opt/puppetlabs/bin:/afs/psi.ch/user/a/arrell_c/bin:/opt/psi/Tools/Pmodules/0.99.10/bin
+USERNAME=
+LD_LIBRARY_PATH=/opt/gfa/python-3.8/latest/lib/python3.8/site-packages/jep
+LD_PRELOAD=/opt/gfa/python-3.8/latest/lib/libpython3.8.so
+SHELL=/bin/bash
+DISPLAY=localhost:88.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xe44ea0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xe44ea0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0xe44ea0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0xbf4390], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0xbf4390], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0xe44ea0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR2: [libjvm.so+0xbf4230], sa_mask[0]=00000000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGINT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGTERM: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGQUIT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+
+
+---------------  S Y S T E M  ---------------
+
+OS:Red Hat Enterprise Linux Server release 7.9 (Maipo)
+uname:Linux 3.10.0-1160.45.1.el7.x86_64 #1 SMP Fri Sep 24 10:17:16 UTC 2021 x86_64
+libc:glibc 2.17 NPTL 2.17 
+rlimit: STACK 8192k, CORE 0k, NPROC 4096, NOFILE 4096, AS infinity, DATA infinity, FSIZE infinity
+load average:14.60 12.44 12.09
+
+/proc/meminfo:
+MemTotal:       65806556 kB
+MemFree:         9416116 kB
+MemAvailable:   33098308 kB
+Buffers:            7600 kB
+Cached:         19302480 kB
+SwapCached:            0 kB
+Active:         28469748 kB
+Inactive:       11272160 kB
+Active(anon):   20442580 kB
+Inactive(anon):   119320 kB
+Active(file):    8027168 kB
+Inactive(file): 11152840 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:               644 kB
+Writeback:             0 kB
+AnonPages:      20432084 kB
+Mapped:           944640 kB
+Shmem:            130072 kB
+Slab:           10499104 kB
+SReclaimable:    5034060 kB
+SUnreclaim:      5465044 kB
+KernelStack:      255008 kB
+PageTables:       386388 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    65806556 kB
+Committed_AS:   65127044 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      335804 kB
+VmallocChunk:   34359273464 kB
+Percpu:             3776 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   1765376 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      397184 kB
+DirectMap2M:    66711552 kB
+
+
+/proc/sys/kernel/threads-max (system-wide limit on the number of threads):
+513920
+
+
+/proc/sys/vm/max_map_count (maximum number of memory map areas a process may have):
+65530
+
+
+/proc/sys/kernel/pid_max (system-wide limit on number of process identifiers):
+32768
+
+
+
+container (cgroup) information:
+container_type: cgroupv1
+cpu_cpuset_cpus: 0-15
+cpu_memory_nodes: 0
+active_processor_count: 16
+cpu_quota: -1
+cpu_period: 100000
+cpu_shares: -1
+memory_limit_in_bytes: -1
+memory_and_swap_limit_in_bytes: -1
+memory_soft_limit_in_bytes: -1
+memory_usage_in_bytes: 40696889344
+memory_max_usage_in_bytes: 0
+
+
+CPU:total 16 (initial active 16) (1 cores per cpu, 1 threads per core) family 6 model 79 stepping 0, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, clmul, 3dnowpref, tsc, tscinvbit, fma
+CPU Model and flags from /proc/cpuinfo:
+model name	: Intel(R) Xeon(R) Gold 6254 CPU @ 3.10GHz
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx rdtscp lm constant_tsc arch_perfmon nopl tsc_reliable nonstop_tsc eagerfpu pni pclmulqdq vmx ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx hypervisor lahf_lm 3dnowprefetch tpr_shadow vnmi ept vpid arat
+
+Memory: 4k page, physical 65806556k(9416116k free), swap 0k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (12+32) for linux-amd64 JRE (12+32), built on Feb 13 2019 21:04:50 by "mach5one" with gcc 7.3.0
+
+END.
