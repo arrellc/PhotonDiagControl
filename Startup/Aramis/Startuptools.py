@@ -16,6 +16,9 @@ def device_param(deviceName):
     if deviceName == '64':
         FullName = 'SARFE10-PPRM064'
         BitDepth = 12
+    if deviceName == '68':
+        FullName = 'SAROP31-PSCR068'
+        BitDepth = 12
     # Optics hutch Alvra    
     if deviceName == '66':
        FullName = 'SAROP11-PPRM066'
@@ -48,6 +51,14 @@ def device_param(deviceName):
     if deviceName == '138':
         FullName = 'SAROP21-PPRM138'
         BitDepth = 12
+     # Optics hutch Cristallina
+    if deviceName == '85':
+        FullName = 'SAROP31-PPRM085'
+        BitDepth = 12
+    if deviceName == '113':
+        FullName = 'SAROP31-PPRM113'
+        BitDepth = 12
+
     else:
         print('Incorrect device name, use only last 3 digits, i.e for SARFE10-PPRM053 use 053')
         
